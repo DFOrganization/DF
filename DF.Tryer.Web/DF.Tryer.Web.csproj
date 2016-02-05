@@ -782,6 +782,10 @@
       <Project>{eeb72ec4-096a-4e1a-ade8-737ee473e239}</Project>
       <Name>DF.Tryer.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DF.Tryer.Tool\DF.Tryer.Tool.csproj">
+      <Project>{92a7cf9a-4f30-46a7-b014-178d983e5646}</Project>
+      <Name>DF.Tryer.Tool</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
