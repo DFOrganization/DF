@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace DF.Tryer.Web.Areas.API
+namespace DF.Tryer.Web.Areas.WebApi
 {
-    public class APIAreaRegistration : AreaRegistration 
+    public class WebApiAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "API";
+                return "WebApi";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "API_default",
-                "API/{controller}/{action}/{id}",
+                "WebApi_default",
+                "WebApi/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
