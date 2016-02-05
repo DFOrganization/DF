@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TryerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“Tryer.dbo.Citys”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="Citys">
+          <Property Name="ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="County_en" Type="nvarchar" MaxLength="255" />
+          <Property Name="County" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="Province" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--生成过程中发现错误:
+警告 6013: 表/视图“Tryer.dbo.Scenics”未定义主键，并且无法推断有效的主键。已排除了此表/视图。若要使用实体，将需要检查您的架构、添加正确的键并取消对实体的注释。
+        <EntityType Name="Scenics">
+          <Property Name="ID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Scenic" Type="nvarchar" MaxLength="255" />
+          <Property Name="County" Type="nvarchar" MaxLength="255" />
+          <Property Name="Province" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="Sys_Func">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_PageID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="ParentID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="FuncName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="64" />
+          <Property Name="IsAsc" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Page">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="PageUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_FuncID" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_PageControl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="ControlName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="PageUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PageControlID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Sys_Permission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="PermissionName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Sys_Permission_R_Page">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_PermissionID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_PageID" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Permission_R_PageControl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_PermissionID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_PageControlID" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Permission_R_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_PermissionID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_RoleID" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Sys_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="RealName" Type="nvarchar" MaxLength="64" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="64" />
+          <Property Name="Email" Type="nvarchar" MaxLength="64" />
+          <Property Name="Birthday" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Sys_User_R_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_UserID" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Sys_RoleID" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TryerModelStoreContainer">
+          <EntitySet Name="Sys_Func" EntityType="Self.Sys_Func" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Page" EntityType="Self.Sys_Page" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_PageControl" EntityType="Self.Sys_PageControl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Permission" EntityType="Self.Sys_Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Permission_R_Page" EntityType="Self.Sys_Permission_R_Page" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Permission_R_PageControl" EntityType="Self.Sys_Permission_R_PageControl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Permission_R_Role" EntityType="Self.Sys_Permission_R_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Role" EntityType="Self.Sys_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_User" EntityType="Self.Sys_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_User_R_Role" EntityType="Self.Sys_User_R_Role" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TryerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sys_Func">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_PageID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FuncName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="IsAsc" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Page">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PageName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_FuncID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_PageControl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ControlName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PageControlID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sys_Permission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PermissionName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sys_Permission_R_Page">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_PermissionID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_PageID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Permission_R_PageControl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_PermissionID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_PageControlID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Permission_R_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_PermissionID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_RoleID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sys_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sys_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RealName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="Mobile" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Sys_User_R_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_UserID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sys_RoleID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TryerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sys_Func" EntityType="Self.Sys_Func" />
+          <EntitySet Name="Sys_Page" EntityType="Self.Sys_Page" />
+          <EntitySet Name="Sys_PageControl" EntityType="Self.Sys_PageControl" />
+          <EntitySet Name="Sys_Permission" EntityType="Self.Sys_Permission" />
+          <EntitySet Name="Sys_Permission_R_Page" EntityType="Self.Sys_Permission_R_Page" />
+          <EntitySet Name="Sys_Permission_R_PageControl" EntityType="Self.Sys_Permission_R_PageControl" />
+          <EntitySet Name="Sys_Permission_R_Role" EntityType="Self.Sys_Permission_R_Role" />
+          <EntitySet Name="Sys_Role" EntityType="Self.Sys_Role" />
+          <EntitySet Name="Sys_User" EntityType="Self.Sys_User" />
+          <EntitySet Name="Sys_User_R_Role" EntityType="Self.Sys_User_R_Role" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TryerModelStoreContainer" CdmEntityContainer="TryerEntities">
+          <EntitySetMapping Name="Sys_Func">
+            <EntityTypeMapping TypeName="TryerModel.Sys_Func">
+              <MappingFragment StoreEntitySet="Sys_Func">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sys_PageID" ColumnName="Sys_PageID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="FuncName" ColumnName="FuncName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsAsc" ColumnName="IsAsc" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Page">
+            <EntityTypeMapping TypeName="TryerModel.Sys_Page">
+              <MappingFragment StoreEntitySet="Sys_Page">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="Sys_FuncID" ColumnName="Sys_FuncID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_PageControl">
+            <EntityTypeMapping TypeName="TryerModel.Sys_PageControl">
+              <MappingFragment StoreEntitySet="Sys_PageControl">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ControlName" ColumnName="ControlName" />
+                <ScalarProperty Name="PageUrl" ColumnName="PageUrl" />
+                <ScalarProperty Name="PageControlID" ColumnName="PageControlID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Permission">
+            <EntityTypeMapping TypeName="TryerModel.Sys_Permission">
+              <MappingFragment StoreEntitySet="Sys_Permission">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PermissionName" ColumnName="PermissionName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Permission_R_Page">
+            <EntityTypeMapping TypeName="TryerModel.Sys_Permission_R_Page">
+              <MappingFragment StoreEntitySet="Sys_Permission_R_Page">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sys_PermissionID" ColumnName="Sys_PermissionID" />
+                <ScalarProperty Name="Sys_PageID" ColumnName="Sys_PageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Permission_R_PageControl">
+            <EntityTypeMapping TypeName="TryerModel.Sys_Permission_R_PageControl">
+              <MappingFragment StoreEntitySet="Sys_Permission_R_PageControl">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sys_PermissionID" ColumnName="Sys_PermissionID" />
+                <ScalarProperty Name="Sys_PageControlID" ColumnName="Sys_PageControlID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Permission_R_Role">
+            <EntityTypeMapping TypeName="TryerModel.Sys_Permission_R_Role">
+              <MappingFragment StoreEntitySet="Sys_Permission_R_Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sys_PermissionID" ColumnName="Sys_PermissionID" />
+                <ScalarProperty Name="Sys_RoleID" ColumnName="Sys_RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Role">
+            <EntityTypeMapping TypeName="TryerModel.Sys_Role">
+              <MappingFragment StoreEntitySet="Sys_Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_User">
+            <EntityTypeMapping TypeName="TryerModel.Sys_User">
+              <MappingFragment StoreEntitySet="Sys_User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_User_R_Role">
+            <EntityTypeMapping TypeName="TryerModel.Sys_User_R_Role">
+              <MappingFragment StoreEntitySet="Sys_User_R_Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sys_UserID" ColumnName="Sys_UserID" />
+                <ScalarProperty Name="Sys_RoleID" ColumnName="Sys_RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

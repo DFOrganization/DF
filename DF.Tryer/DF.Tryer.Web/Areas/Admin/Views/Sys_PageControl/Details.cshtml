@@ -1,0 +1,50 @@
+﻿@model DF.Tryer.Model.Sys_PageControl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sys_PageControl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ControlName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ControlName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PageControlID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PageControlID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

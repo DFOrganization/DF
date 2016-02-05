@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DF.Tryer.Model.Sys_PageControl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ControlName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PageControlID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ControlName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PageControlID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

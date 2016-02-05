@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DF.Tryer.Tool", "DF.Tryer.Tool\DF.Tryer.Tool.csproj", "{92E26A5F-6324-4A1D-8461-26646A314961}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DF.Tryer.Model", "DF.Tryer.Model\DF.Tryer.Model.csproj", "{EEB72EC4-096A-4E1A-ADE8-737EE473E239}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DF.Tryer.Web", "DF.Tryer.Web\DF.Tryer.Web.csproj", "{68B8EA06-6278-4457-AA37-AF0E608F938B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{92E26A5F-6324-4A1D-8461-26646A314961}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92E26A5F-6324-4A1D-8461-26646A314961}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92E26A5F-6324-4A1D-8461-26646A314961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEB72EC4-096A-4E1A-ADE8-737EE473E239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB72EC4-096A-4E1A-ADE8-737EE473E239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB72EC4-096A-4E1A-ADE8-737EE473E239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB72EC4-096A-4E1A-ADE8-737EE473E239}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B8EA06-6278-4457-AA37-AF0E608F938B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B8EA06-6278-4457-AA37-AF0E608F938B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B8EA06-6278-4457-AA37-AF0E608F938B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B8EA06-6278-4457-AA37-AF0E608F938B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

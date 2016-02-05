@@ -1,0 +1,87 @@
+﻿@model IEnumerable<DF.Tryer.Model.Sys_User>
+
+@{
+    ViewBag.Title = "Index";
+}
+@section csses{
+    <link href="~/Scripts/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+}
+<h2>管理员列表</h2>
+
+<p>
+    @Html.ActionLink("创建新管理员", "Create")
+</p>
+<table id="UserTable"  data-toggle="table" data-pagination="true">
+    <tr>
+        <th>
+            用户名
+        </th>
+        <th>
+            密码
+        </th>
+        <th>
+            姓名
+        </th>
+        <th>
+            性别
+        </th>
+        <th>
+            手机
+        </th>
+        <th>
+            邮箱
+        </th>
+        <th>
+            生日
+        </th>
+        <th>操作</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoginName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RealName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birthday)
+            </td>
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("详情", "Details", new { id = item.ID }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@section scripts{
+
+    <script src="~/Scripts/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Scripts/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script>
+        $(function () {
+            initUserTable();
+        })
+        function initUserTable() {
+            $('#UserTable')
+        }
+    </script>
+}
