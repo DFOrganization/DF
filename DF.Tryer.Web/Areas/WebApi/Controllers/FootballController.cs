@@ -38,7 +38,7 @@ namespace DF.Tryer.Web.Areas.WebApi.Controllers
             {
                 return newObj["error_code"].Value + ":" + newObj["reason"].Value;
             }
-            return newObj.ToString();
+            return newObj["result"].ToString();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace DF.Tryer.Web.Areas.WebApi.Controllers
             {
                 return newObj["error_code"].Value + ":" + newObj["reason"].Value;
             }
-            return newObj.ToString();
+            return newObj["result"].ToString();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace DF.Tryer.Web.Areas.WebApi.Controllers
             {
                 return newObj["error_code"].Value + ":" + newObj["reason"].Value;
             }
-            return newObj.ToString();
+            return newObj["result"].ToString();
         }
     }
 }
