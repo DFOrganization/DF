@@ -17,7 +17,7 @@ namespace DF.Tryer.Web.Areas.WebApi
             context.MapRoute(
                 "WebApi_default",
                 "WebApi/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new {  id = UrlParameter.Optional }
             );
         }
     }
