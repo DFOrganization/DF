@@ -7,37 +7,36 @@ using System.Net.Http;
 using System.Web.Http;
 using Xfrog.Net;
 using DF.Tryer.Tool.Extensions;
+using System.Collections;
 using DF.Tryer.Tool.Helper;
 
 namespace DF.Tryer.Web.Areas.WebApi.Controllers
 {
-    public class FootballController : ApiController
+    public class NBAController : ApiController
     {
-        private static string appkey = "JHAPIKey_Football".GetAppSettingString();
+        private static string appkey = "JHAPIKey_NBA".GetAppSettingString();
 
         /// <summary>
-        /// 足球联赛赛事查询
+        /// NBA常规赛赛程赛果
         /// </summary>
-        /// <param name="LeagueName">联赛名称</param>
         /// <returns></returns>
-        public string GetLeague(string LeagueName)
+        public string GetCombat()
         {
-            string url = "http://op.juhe.cn/onebox/football/league";
+            string url = "http://op.juhe.cn/onebox/basketball/nba";
 
             var parameters = new Dictionary<string, string>();
-            parameters.Add("league", LeagueName);
 
             return SendResquestHelper.GetApiResult(appkey, url, parameters);
         }
 
         /// <summary>
-        /// 球队赛程查询
+        /// 球队赛程赛事查询
         /// </summary>
         /// <param name="TeamName">球队名称</param>
         /// <returns></returns>
         public string GetSchedule(string TeamName)
         {
-            string url = "http://op.juhe.cn/onebox/football/team";
+            string url = "http://op.juhe.cn/onebox/basketball/team";
 
             var parameters = new Dictionary<string, string>();
             parameters.Add("team", TeamName); 
@@ -53,7 +52,7 @@ namespace DF.Tryer.Web.Areas.WebApi.Controllers
         /// <returns></returns>
         public string GetCombat(string HTeamName, string VTeamName)
         {
-            string url = "http://op.juhe.cn/onebox/football/combat";
+            string url = "http://op.juhe.cn/onebox/basketball/combat";
 
             var parameters = new Dictionary<string, string>();
             parameters.Add("hteam", HTeamName);
@@ -61,6 +60,6 @@ namespace DF.Tryer.Web.Areas.WebApi.Controllers
 
             return SendResquestHelper.GetApiResult(appkey, url, parameters);
         }
+
     }
 }
-

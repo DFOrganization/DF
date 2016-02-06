@@ -153,6 +153,8 @@
     <Compile Include="Areas\Admin\Controllers\Sys_PermissionController.cs" />
     <Compile Include="Areas\Admin\Controllers\Sys_RoleController.cs" />
     <Compile Include="Areas\Admin\Controllers\Sys_UserController.cs" />
+    <Compile Include="Areas\WebApi\Controllers\MovieController.cs" />
+    <Compile Include="Areas\WebApi\Controllers\NBAController.cs" />
     <Compile Include="Areas\WebApi\Controllers\Sys_UserController.cs" />
     <Compile Include="Areas\WebApi\WebApiAreaRegistration.cs" />
     <Compile Include="Areas\WebApi\Controllers\FootballController.cs" />
